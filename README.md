@@ -18,16 +18,16 @@ This solution converts data files created by the South Total Station NTS-350/350
 2. Execute the application (check below)
 3. Receive the conveted files from the output directory
 
-### -> Execution under Linux
-- Execute 
+### Execution under Linux
+- If python is in $PATH variable, execute:
 `run.sh`
-- If python is not in $PATH then open a terminal and execute:
+- If python is not in $PATH variable, execute:
 `/path/to/python src/python3/data_converter.py`
 
-### -> Execution under Windows
+### Execution under Windows
 - Execute:
 `run.bat`
-- If python.exe is not in %PATH% then open a terminal and execute:
+- If python.exe is not in %PATH% variable, execute:
 `/path/to/python.exe src/python3/data_converter.py`
 
 ## Contribute
