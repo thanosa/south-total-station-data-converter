@@ -5,30 +5,30 @@ from pathlib import Path
 from typing import Tuple
 
 
-# Reads a file into a list.
 def read_input(in_file: Path) -> list:
+    """Reads a file into a list."""
     read_list = [line.strip() for line in open(in_file, 'r')]
     return read_list
 
 
-# Write a list into a file.
 def write_output(out_data, out_file_path):
+    """Write a list into a file."""
     with open(out_file_path, 'w') as f:
         for line in out_data:
             f.write("%s\n" % line)
 
 
-# Gets a data line and returns the key and the values.
 def get_key_values(data_line):
-   
+    """Gets a data line and returns the key and the values."""
     key = data_line[:8].rstrip()
     values = data_line[8:].rstrip().split(",")
 
     return key, values
 
 
-# Gets an input list, converts data and returns a list.
 def convert_data(in_data):
+    """Gets an input list, converts data and returns a list."""
+    
     # These are the constant keys.
     IGNORED_KEYS = ["JOB", "INST", "UNITS", "XYZ", "HV"]
     USABLE_KEYS = ["STN", "ST", "BS", "SS", "SD"]
@@ -98,9 +98,9 @@ def convert_data(in_data):
     return out_data
 
 
-# Locates the input and output directories relatively of the script path.
 def locate_in_out_dirs(script_file: str) -> Tuple[str, str]:
-
+    """Locates the input and output directories relatively of the script path."""
+    
     script_dir = Path(os.path.dirname(os.path.realpath(script_file)))
     in_dir = Path(script_dir / ".." / ".." / "input").resolve()
     out_dir = Path(script_dir / ".." / ".." / "output").resolve()
@@ -129,7 +129,6 @@ def main():
         print("Converting file: " + str(in_file))
 
         # Reads the input data into a list.
-        # TODO: This should be rewritten with lookahead for scaling.
         in_data = read_input(in_file)
 
         # Converts the data.
@@ -140,6 +139,5 @@ def main():
         write_output(out_data, out_file_path)
 
 
-# Prevents execution of main when imported.
 if __name__ == '__main__':
     main()
